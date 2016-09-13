@@ -1,0 +1,65 @@
+require 'set'
+
+module Dusen
+  module ActiveRecord
+    class SearchText < ::ActiveRecord::Base
+
+      self.table_name = 'search_texts'
+
+      belongs_to :source, :polymorphic => true, :inverse_of => :search_text_record
+
+      def update_words!(text)
+        text = Util.normalize_word_boundaries(text)
+        update_attributes!(:words => text, :stale => false)
+      end
+
+      def invalidate!
+        update_attributes!(:stale => true)
+      end
+
+      def self.for_model(model)
+        Util.append_scope_conditions(scoped({}), :source_type => model.name)
+      end
+
+      def self.invalid
+        scoped(:conditions => { :stale => true })
+      end
+
+      def self.synchronize_model(model)
+        model = model.origin_class
+        invalid_index_records = for_model(model).invalid
+        source_ids = invalid_index_records.collect_column(:source_id)
+        pending_source_ids = Set.new(source_ids)
+        model.find_in_batches(:conditions => { :id => source_ids } ) do |batch|
+          batch.each do |source_record|
+            source_record.index_search_text
+            pending_source_ids.delete(source_record.id)
+          end
+        end
+        if pending_source_ids.present?
+          invalid_index_records.delete_all(:source_id => pending_source_ids.to_a)
+        end
+        true
+      end
+
+      def self.match(model, phrases)
+        synchronize_model(model) if model.search_text?
+        Dusen::Util.append_scope_conditions(
+          model,
+          :id => matching_source_ids(model, phrases)
+        )
+      end
+
+      def self.matching_source_ids(model, phrases)
+        phrases = phrases.collect { |phrase| Util.normalize_word_boundaries(phrase) }
+        conditions = [
+          'MATCH (words) AGAINST (? IN BOOLEAN MODE)',
+          Dusen::Util.boolean_fulltext_query(phrases)
+        ]
+        matching_texts = Dusen::Util.append_scope_conditions(for_model(model), conditions)
+        matching_texts.collect_column(:source_id)
+      end
+
+    end
+  end
+end

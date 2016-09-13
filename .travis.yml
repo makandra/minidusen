@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - "2.1.8"
+services:
+  - mysql
+  - postgresql
+before_script: rake travis_ci:prepare
+script: rake all:bundle all:spec
+notifications:
+  email:
+    - fail@makandra.de
+branches:
+  only:
+    - master
