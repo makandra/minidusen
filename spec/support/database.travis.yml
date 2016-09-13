@@ -1,0 +1,9 @@
+mysql:
+  database: minidusen_test
+  username: travis
+  password:
+
+postgresql:
+  database: minidusen_test
+  user: postgres
+  password:

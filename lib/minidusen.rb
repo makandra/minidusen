@@ -1,0 +1,12 @@
+require 'active_support'
+require 'active_record'
+require 'edge_rider'
+
+require 'minidusen/version'
+require 'minidusen/util'
+require 'minidusen/token'
+require 'minidusen/parser'
+require 'minidusen/query'
+require 'minidusen/syntax'
+require 'minidusen/filter'
+require 'minidusen/active_record_ext'
