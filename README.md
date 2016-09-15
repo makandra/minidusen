@@ -20,7 +20,7 @@ The following type of queries are supported:
 
 Minidusen is a quick way to implement find-as-you-type filters for index views:
 
-![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/master/doc/filtered_index_view.png)
+![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/master/doc/filtered_index_view.cropped.png)
 
 We have found it to scale well for many thousand records. It's probably not a good idea to use Minidusen for hundreds of thousands of records or very long text columns. For this we recommend to use PostgreSQL with [pg_search](https://github.com/Casecommons/pg_search) or full-text databases like [Solr](https://github.com/sunspot/sunspot).
 
