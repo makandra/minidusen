@@ -7,6 +7,13 @@ Low-tech search solution for ActiveRecord with MySQL or PostgreSQL
 Minidusen lets you filter ActiveRecord models with a single query string.
 It works with your existing MySQL or PostgreSQL schema by mostly relying on simple `LIKE` queries. No additional indexes, tables or indexing databases are required.
 
+This makes Minidusen a quick way to implement find-as-you-type filters for index views:
+
+![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/master/doc/filtered_index_view.cropped.png)
+
+
+### Supported queries
+
 Minidusen accepts a single, Google-like query string and converts it into `WHERE` conditions for [an ActiveRecord scope](http://guides.rubyonrails.org/active_record_querying.html#conditions).
 
 The following type of queries are supported:
@@ -18,11 +25,14 @@ The following type of queries are supported:
 - `filetype:pdf` (developer-defined filter for file type)
 - `some words 'a phrase' filetype:pdf -excluded -'excluded  phrase' -filetype:pdf` (combination of the above)
 
-Minidusen is a quick way to implement find-as-you-type filters for index views:
 
-![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/master/doc/filtered_index_view.cropped.png)
+### Limitations
 
-We have found it to scale well for many thousand records. It's probably not a good idea to use Minidusen for hundreds of thousands of records or very long text columns. For this we recommend to use PostgreSQL with [pg_search](https://github.com/Casecommons/pg_search) or full-text databases like [Solr](https://github.com/sunspot/sunspot).
+Since Minidusen doesn't use an index, it scales linearly with the amount of of text that needs to be searched. Yet `LIKE` queries are pretty fast and we have found this low-tech approach to scale well for many thousand records.
+
+It's probably not a good idea to use Minidusen for hundreds of thousands of records, or for very long text columns. For this we recommend to use PostgreSQL with [pg_search](https://github.com/Casecommons/pg_search) or full-text databases like [Solr](https://github.com/sunspot/sunspot).
+
+Another limitation of Minidusen is that it only *filters*, but does not *rank*. A record either matches or not. Minidusen won't tell you if one record matches *better* than another record.
 
 
 Installation
