@@ -134,7 +134,7 @@ Google supports queries like `filetype:pdf` that filters records by some criteri
 Let's support a query like `email:foo@bar.com` to explictly search for a contact's email address, without filtering against other columns.
 
 We can learn this syntax by adding a `filter:email` instruction
-to our `ContactFilter` class`:
+to our `ContactFilter` class:
 
 ```ruby
 class ContactFilter
