@@ -28,3 +28,4 @@ matrix:
       gemfile: gemfiles/Gemfile.5.0.mysql2
     - rvm: "2.1.8"
       gemfile: gemfiles/Gemfile.5.0.pg
+
