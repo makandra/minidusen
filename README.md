@@ -196,13 +196,12 @@ Development
 -----------
 
 - There are tests in `spec`. We only accept PRs with tests.
-- We currently develop using Ruby 2.2.4 (see `.ruby-version`) since that version works for all versions of ActiveRecord that we support.
-- TravisCI will test additional Ruby versions (2.1.8 and 2.3.1)
+- We currently develop using Ruby 2.2.4 (see `.ruby-version`) since that version works for all versions of ActiveRecord that we support. Travis CI will test additional Ruby versions (2.1.8 and 2.3.1).
 - Put your database credentials into `spec/support/database.yml`. There's a `database.sample.yml` you can use as a template.
 - Create a database `minidusen_test` in both MySQL and PostgreSQL.
 - There are gem bundles in `gemfiles` for each combination of ActiveRecord version and database type that we support.
 - You can bundle all test applications by saying `bundle exec rake all:install`
-- You can run specs from the project root by saying `bundle exec rake all:spec`.
+- You can run specs from the project root by saying `bundle exec rake all:spec`. This will run all gemfiles compatible with your current Ruby.
 
 If you would like to contribute:
 
