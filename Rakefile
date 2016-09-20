@@ -48,15 +48,15 @@ class TestMatrix
       if compatible?(entry)
         print_title gemfile
         ENV['BUNDLE_GEMFILE'] = gemfile
-        gemset_passed = block.call
-        @all_passed &= gemset_passed
-        if gemset_passed
-          @results[gemfile] = tint('Success', COLOR_SUCCESS)
+        gemfile_passed = block.call
+        @all_passed &= gemfile_passed
+        if gemfile_passed
+          @results[entry] = tint('Success', COLOR_SUCCESS)
         else
-          @results[gemfile] = tint('Failed', COLOR_FAILURE)
+          @results[entry] = tint('Failed', COLOR_FAILURE)
         end
       else
-        @results[gemfile] = tint("Only for Ruby #{entry['rvm']}", COLOR_WARNING)
+        @results[entry] = tint("Skipped", COLOR_WARNING)
       end
     end
     print_summary
@@ -66,7 +66,19 @@ class TestMatrix
 
   def entries
     require 'yaml'
-    YAML.load_file('.travis.yml')['matrix']['include'] or raise "No Travis CI matrix found in .travis.yml"
+    travis_yml = YAML.load_file('.travis.yml')
+    rubies = travis_yml.fetch('rvm')
+    gemfiles = travis_yml.fetch('gemfile')
+    matrix_options = travis_yml.fetch('matrix', {})
+    excludes = matrix_options.fetch('exclude', [])
+    entries = []
+    rubies.each do |ruby|
+      gemfiles.each do |gemfile|
+        entry = { 'rvm' => ruby, 'gemfile' => gemfile }
+        entries << entry unless excludes.include?(entry)
+      end
+    end
+    entries
   end
 
   def compatible?(entry)
@@ -86,9 +98,11 @@ class TestMatrix
   def print_summary
     print_title 'Summary'
 
-    gemset_size = @results.keys.collect(&:size).max
-    @results.each do |gemset, result|
-      puts "- #{gemset.ljust(gemset_size)}  #{result}"
+    gemfile_size = @results.keys.map { |entry| entry['gemfile'].size }.max
+    ruby_size = @results.keys.map { |entry| entry['rvm'].size }.max
+
+    @results.each do |entry, result|
+      puts "- #{entry['gemfile'].ljust(gemfile_size)}  Ruby #{entry['rvm'].ljust(ruby_size)}  #{result}"
     end
 
     puts
