@@ -2,7 +2,7 @@ module Minidusen
   module Util
     extend self
 
-    def postgres?(scope)
+    def postgresql?(scope)
       adapter_name = scope.connection.class.name
       adapter_name =~ /postgres/i
     end
@@ -12,7 +12,7 @@ module Minidusen
     end
 
     def ilike_operator(scope)
-      if postgres?(scope)
+      if postgresql?(scope)
         'ILIKE'
       else
         'LIKE'
@@ -20,7 +20,7 @@ module Minidusen
     end
 
     def regexp_operator(scope)
-      if postgres?(scope)
+      if postgresql?(scope)
         '~'
       else
         'REGEXP'
