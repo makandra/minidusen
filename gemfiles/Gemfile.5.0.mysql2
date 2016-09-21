@@ -6,4 +6,5 @@ gem 'mysql2', '~>0.4.4'
 
 gem 'byebug'
 
+gem 'gemika'
 gem 'minidusen', :path => '..'
