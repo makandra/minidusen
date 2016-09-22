@@ -26,10 +26,6 @@ notifications:
   email:
     - fail@makandra.de
 
-branches:
-  only:
-    - master
-
 matrix:
   exclude:
     - rvm: 2.1.8
