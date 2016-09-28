@@ -200,8 +200,8 @@ Development
 - Put your database credentials into `spec/support/database.yml`. There's a `database.sample.yml` you can use as a template.
 - Create a database `minidusen_test` in both MySQL and PostgreSQL.
 - There are gem bundles in `gemfiles` for each combination of ActiveRecord version and database type that we support.
-- You can bundle all test applications by saying `bundle exec rake all:install`
-- You can run specs from the project root by saying `bundle exec rake all:spec`. This will run all gemfiles compatible with your current Ruby.
+- You can bundle all test applications by saying `bundle exec rake matrix:install`
+- You can run specs from the project root by saying `bundle exec rake matrix:spec`. This will run all gemfiles compatible with your current Ruby.
 
 If you would like to contribute:
 

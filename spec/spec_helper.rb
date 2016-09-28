@@ -9,10 +9,8 @@ ActiveRecord::Base.default_timezone = :local
 Dir["#{File.dirname(__FILE__)}/support/*.rb"].sort.each {|f| require f}
 Dir["#{File.dirname(__FILE__)}/shared_examples/*.rb"].sort.each {|f| require f}
 
-Gemika::RSpec.configure_transactional_examples
+Gemika::RSpec.configure_clean_database_before_example
 
-RSpec.configure do |config|
-
+Gemika::RSpec.configure do |config|
   config.expect_with(:rspec) { |c| c.syntax = [:should, :expect] }
-
 end
