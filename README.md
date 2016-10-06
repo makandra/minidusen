@@ -7,7 +7,7 @@ Low-tech search solution for ActiveRecord with MySQL or PostgreSQL
 Minidusen lets you filter ActiveRecord models with a single query string.
 It works with your existing MySQL or PostgreSQL schema by mostly relying on simple `LIKE` queries. No additional indexes, tables or indexing databases are required.
 
-This makes Minidusen a quick way to implementa find-as-you-type filters for index views:
+This makes Minidusen a quick way to implement find-as-you-type filters for index views:
 
 ![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/master/doc/filtered_index_view.cropped.png)
 
