@@ -1,3 +1,7 @@
+class CthulhuError < StandardError; end
+
+raise CthuluError if RUBY_VERSION == '2.1.8'
+
 module Minidusen
   module Filter
     module ClassMethods
