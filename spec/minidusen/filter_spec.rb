@@ -181,6 +181,27 @@ describe Minidusen::Filter do
 
     end
 
+    it 'runs filter in the instance context' do
+      filter_class = Class.new do
+        include Minidusen::Filter
+
+        def columns
+          [:name, :email, :city]
+        end
+
+        filter :text do |scope, phrases|
+          scope.report_instance(self)
+          scope.where_like(columns => phrases)
+        end
+      end
+      filter_instance = filter_class.new
+
+      match = User.create!(:name => 'Abraham')
+      no_match = User.create!(:name => 'Elizabath')
+      expect(User).to receive(:report_instance).with(filter_instance)
+      filter_instance.filter(User, 'Abra').to_a.should == [match]
+    end
+
   end
 
   describe '#minidusen_syntax' do
