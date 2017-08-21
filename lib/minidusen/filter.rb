@@ -18,7 +18,7 @@ module Minidusen
     end
 
     def filter(scope, query)
-      minidusen_syntax.search(scope, query)
+      minidusen_syntax.search(self, scope, query)
     end
 
     private

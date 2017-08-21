@@ -10,12 +10,12 @@ module Minidusen
       @scopers[field] = scoper
     end
 
-    def search(root_scope, query)
+    def search(instance, root_scope, query)
       query = parse(query) if query.is_a?(String)
       query = query.condensed
-      matches = apply_query(root_scope, query.include)
+      matches = apply_query(instance, root_scope, query.include)
       if query.exclude.any?
-        matches = append_excludes(matches, query.exclude)
+        matches = append_excludes(instance, matches, query.exclude)
       end
       matches
     end
@@ -34,17 +34,17 @@ module Minidusen
       scope.where('1=2')
     end
 
-    def apply_query(root_scope, query)
+    def apply_query(instance, root_scope, query)
       scope = root_scope
       query.each do |token|
         scoper = @scopers[token.field] || NONE
-        scope = scoper.call(scope, token.value)
+        scope = instance.instance_exec(scope, token.value, &scoper)
       end
       scope
     end
 
-    def append_excludes(matches, exclude_query)
-      excluded_records = apply_query(matches.origin_class, exclude_query)
+    def append_excludes(instance, matches, exclude_query)
+      excluded_records = apply_query(instance, matches.origin_class, exclude_query)
       qualified_id_field = Util.qualify_column_name(excluded_records, excluded_records.primary_key)
       exclude_sql = "#{qualified_id_field} NOT IN (#{excluded_records.select(qualified_id_field).to_sql})"
       matches.where(exclude_sql)
