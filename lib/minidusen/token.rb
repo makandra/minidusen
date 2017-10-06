@@ -5,7 +5,7 @@ module Minidusen
 
     def initialize(options)
       @value = options.fetch(:value)
-      @exclude = options.fetch(:exclude)
+      @exclude = options.fetch(:exclude, false)
       @field = options.fetch(:field).to_s
     end
 

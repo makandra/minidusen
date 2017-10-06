@@ -11,7 +11,7 @@ module Minidusen
     end
 
     def search(instance, root_scope, query)
-      query = parse(query) if query.is_a?(String)
+      query = parse(query)
       query = query.condensed
       matches = apply_query(instance, root_scope, query.include)
       if query.exclude.any?

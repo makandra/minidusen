@@ -17,6 +17,10 @@ module Minidusen
       tokens[index]
     end
 
+    def size
+      tokens.size
+    end
+
     def to_s
       collect(&:to_s).join(" + ")
     end
