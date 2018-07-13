@@ -63,6 +63,14 @@ describe Minidusen::Parser do
         query[0].exclude.should == true
       end
 
+      it 'should ignore invalid utf-8 byte sequences' do
+        term_with_invalid_byte_sequence = "word\255".force_encoding('UTF-8')
+
+        query = Minidusen::Parser.parse(term_with_invalid_byte_sequence)
+        query.size.should == 1
+        query[0].value.should == 'word'
+      end
+
     end
 
     describe 'when called with a Query' do

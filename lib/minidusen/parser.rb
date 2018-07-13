@@ -25,6 +25,7 @@ module Minidusen
 
       def parse_string(string)
         string = string.dup # we are going to delete substrings in-place
+        string = string.encode('UTF-8', invalid: :replace, undef: :replace, replace: '')
         query = Query.new
         extract_field_query_tokens(string, query)
         extract_text_query_tokens(string, query)
