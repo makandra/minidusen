@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    minidusen (0.8.2)
+    minidusen (0.8.3)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
       edge_rider (>= 0.2.5)
