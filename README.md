@@ -151,7 +151,7 @@ class ContactFilter
   include Minidusen::Filter
 
   filter :email do |scope, email|
-    scope.where(emai: email)
+    scope.where(email: email)
   end
 
   filter :text do |scope, phrases|
