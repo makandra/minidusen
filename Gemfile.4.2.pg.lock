@@ -1,5 +1,5 @@
 PATH
-  remote: ..
+  remote: .
   specs:
     minidusen (0.8.3)
       activerecord (>= 3.2)

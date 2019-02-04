@@ -6,11 +6,11 @@ rvm:
   - 2.3.1
 
 gemfile:
-  - gemfiles/Gemfile.3.2.mysql2
-  - gemfiles/Gemfile.4.2.mysql2
-  - gemfiles/Gemfile.4.2.pg
-  - gemfiles/Gemfile.5.0.mysql2
-  - gemfiles/Gemfile.5.0.pg
+  - Gemfile.3.2.mysql2
+  - Gemfile.4.2.mysql2
+  - Gemfile.4.2.pg
+  - Gemfile.5.0.mysql2
+  - Gemfile.5.0.pg
 
 before_script:
   - psql -c 'create database minidusen_test;' -U postgres
@@ -34,6 +34,6 @@ install:
 matrix:
   exclude:
     - rvm: 2.1.8
-      gemfile: gemfiles/Gemfile.5.0.mysql2
+      gemfile: Gemfile.5.0.mysql2
     - rvm: 2.1.8
-      gemfile: gemfiles/Gemfile.5.0.pg
+      gemfile: Gemfile.5.0.pg

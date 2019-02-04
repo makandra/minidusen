@@ -12,4 +12,4 @@ gem 'byebug'
 gem 'gemika'
 
 # Gem under test
-gem 'minidusen', :path => '..'
+gem 'minidusen', :path => '.'
