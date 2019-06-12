@@ -185,7 +185,8 @@ Minidusen is tested on:
 
 - Rails 3.2
 - Rails 4.2
-- Rails 5.0
+- Rails 5.2
+- Rails 6.0
 - MySQL 5.6
 - PostgreSQL
 

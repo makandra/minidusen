@@ -1,0 +1,16 @@
+source 'https://rubygems.org'
+
+# Runtime dependencies
+gem 'activerecord', '~>5.2.3'
+gem 'pg', '~>0.18.4'
+gem 'i18n', '<=1.5.1' # Required to support tests for Ruby 2.2.x
+
+# Development dependendcies
+gem 'rake'
+gem 'database_cleaner'
+gem 'rspec', '~>3.5'
+gem 'byebug'
+gem 'gemika'
+
+# Gem under test
+gem 'minidusen', :path => '.'

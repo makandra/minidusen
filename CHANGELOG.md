@@ -6,8 +6,16 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ## Unreleased
 
+### Breaking changes
+
+-
+
 ### Compatible changes
+
 - CHANGELOG to satisfy [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) format.
+- Use Rails 5.2 for tests instead of Rails 5.0
+- Added Ruby 2.5.3 to test matrix
+- Added support for Rails 6 RC1
 
 ## 0.8.0 2017-08-21
 

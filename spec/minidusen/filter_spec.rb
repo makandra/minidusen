@@ -25,7 +25,9 @@ describe Minidusen::Filter do
     it 'should not find stale text after fields were updated (bugfix)' do
       match = User.create!(:name => 'Abraham')
       no_match = User.create!(:name => 'Elizabath')
-      match.update_attributes!(:name => 'Johnny')
+      match.name = 'Johnny'
+      match.save!
+
       user_filter.filter(User, 'Abraham').to_a.should be_empty
       user_filter.filter(User, 'Johnny').to_a.should == [match]
     end
