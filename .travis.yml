@@ -27,10 +27,6 @@ sudo: false
 
 cache: bundler
 
-notifications:
-  email:
-    - fail@makandra.de
-
 install:
   # Replace default Travis CI bundler script with a version that doesn't
   # explode when lockfile doesn't match recently bumped version
