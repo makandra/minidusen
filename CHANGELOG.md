@@ -12,7 +12,7 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
--
+- Prefer single includes over a matrix with excludes
 
 ## 0.9.0 2019-06-12
 

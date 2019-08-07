@@ -1,19 +1,45 @@
 language: ruby
 
-rvm:
-  - 2.1.8
-  - 2.2.4
-  - 2.3.1
-  - 2.5.3
-
-gemfile:
-  - Gemfile.3.2.mysql2
-  - Gemfile.4.2.mysql2
-  - Gemfile.4.2.pg
-  - Gemfile.5.2.mysql2
-  - Gemfile.5.2.pg
-  - Gemfile.6.0.mysql2
-  - Gemfile.6.0.pg
+matrix:
+  include:
+    # Rails 3.2
+    - rvm: 2.1.8
+      gemfile: Gemfile.3.2.mysql2
+    - rvm: 2.2.4
+      gemfile: Gemfile.3.2.mysql2
+    - rvm: 2.3.1
+      gemfile: Gemfile.3.2.mysql2
+    # Rails 4.2
+    - rvm: 2.1.8
+      gemfile: Gemfile.4.2.mysql2
+    - rvm: 2.1.8
+      gemfile: Gemfile.4.2.pg
+    - rvm: 2.2.4
+      gemfile: Gemfile.4.2.mysql2
+    - rvm: 2.2.4
+      gemfile: Gemfile.4.2.pg
+    - rvm: 2.3.1
+      gemfile: Gemfile.4.2.mysql2
+    - rvm: 2.3.1
+      gemfile: Gemfile.4.2.pg
+    # Rails 5.2
+    - rvm: 2.2.4
+      gemfile: Gemfile.5.2.mysql2
+    - rvm: 2.2.4
+      gemfile: Gemfile.5.2.pg
+    - rvm: 2.3.1
+      gemfile: Gemfile.5.2.mysql2
+    - rvm: 2.3.1
+      gemfile: Gemfile.5.2.pg
+    - rvm: 2.5.3
+      gemfile: Gemfile.5.2.mysql2
+    - rvm: 2.5.3
+      gemfile: Gemfile.5.2.pg
+    # Rails 6.0
+    - rvm: 2.5.3
+      gemfile: Gemfile.6.0.mysql2
+    - rvm: 2.5.3
+      gemfile: Gemfile.6.0.pg
 
 dist: trusty
 
@@ -34,32 +60,3 @@ install:
 
 addons:
   postgresql: 9.3
-
-matrix:
-  exclude:
-    # Rails 3.2
-    - rvm: 2.5.3
-      gemfile: Gemfile.3.2.mysql2
-    # Rails 4.2
-    - rvm: 2.5.3
-      gemfile: Gemfile.4.2.mysql2
-    - rvm: 2.5.3
-      gemfile: Gemfile.4.2.pg
-    # Rails 5.2
-    - rvm: 2.1.8
-      gemfile: Gemfile.5.2.mysql2
-    - rvm: 2.1.8
-      gemfile: Gemfile.5.2.pg
-    # Rails 6.0
-    - rvm: 2.1.8
-      gemfile: Gemfile.6.0.mysql2
-    - rvm: 2.1.8
-      gemfile: Gemfile.6.0.pg
-    - rvm: 2.2.4
-      gemfile: Gemfile.6.0.mysql2
-    - rvm: 2.2.4
-      gemfile: Gemfile.6.0.pg
-    - rvm: 2.3.1
-      gemfile: Gemfile.6.0.mysql2
-    - rvm: 2.3.1
-      gemfile: Gemfile.6.0.pg
