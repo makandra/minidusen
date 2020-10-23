@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/makandra/mysql2
+  revision: c920d41e43c4722d4c065d2ea9d21494c560bd85
+  branch: 0.3.x-lts
+  specs:
+    mysql2 (0.3.21)
+
 PATH
   remote: .
   specs:
@@ -27,10 +34,9 @@ GEM
     diff-lcs (1.2.5)
     edge_rider (1.0.0)
       activerecord
-    gemika (0.4.0)
+    gemika (0.5.0)
     i18n (0.6.11)
     multi_json (1.12.1)
-    mysql2 (0.3.17)
     rake (11.3.0)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
@@ -57,7 +63,7 @@ DEPENDENCIES
   gemika
   i18n (= 0.6.11)
   minidusen!
-  mysql2 (= 0.3.17)
+  mysql2!
   rake
   rspec (~> 3.4)
 
