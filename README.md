@@ -1,4 +1,4 @@
-Minidusen [![Build Status](https://travis-ci.org/makandra/minidusen.svg?branch=master)](https://travis-ci.org/makandra/minidusen)
+Minidusen [![Tests](https://github.com/makandra/minidusen/workflows/Tests/badge.svg)](https://github.com/makandra/minidusen/actions)
 =========
 
 Low-tech search solution for ActiveRecord with MySQL or PostgreSQL
