@@ -53,7 +53,7 @@ Basic Usage
 Our example will be a simple address book:
 
 ```ruby
-class Contact < ActiveRecord::Base
+class Contact < ApplicationRecord
   validates_presence_of :name, :street, :city, :email
 end
 ```
@@ -68,7 +68,6 @@ class ContactFilter
     columns = [:name, :email]
     scope.where_like(columns => phrases)
   end
-
 end
 ```
 
@@ -136,8 +135,45 @@ You can also use `where_like` to find all the records *not* matching some phrase
 Contact.where_like(name: 'foo', negate: true)
 ```
 
-Processing queries for qualified fields
----------------------------------------
+Filtering associated records
+----------------------------
+
+Minidusen lets you find text in associated records.
+
+Assume the following model where a `Contact` record may be associated with a `Group` record:
+
+```ruby
+class Contact < ApplicationRecord
+  belongs_to :group
+
+  validates_presence_of :name, :street, :city, :email
+end
+
+class Group < ApplicationRecord
+  has_many :contacts
+
+  validates_presence_of :name
+end
+```
+
+We can filter contacts by their group name by joining the `groups` table and filtering on a joined column.
+Note how the joined column is qualified as `groups.name` (rather than just `name`):
+
+```ruby
+class ContactFilter
+  include Minidusen::Filter
+
+  filter :text do |scope, phrases|
+    columns = [:name, :email, 'groups.name']
+    scope.includes(:group).where_like(columns => phrases)
+  end
+end
+```
+
+
+
+Supporting qualified field syntax
+---------------------------------
 
 Google supports queries like `filetype:pdf` that filters records by some criteria without performing a full text search. Minidusen gives you a simple way to support such search syntax.
 
