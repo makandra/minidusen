@@ -223,6 +223,7 @@ Minidusen is tested on:
 - Rails 4.2
 - Rails 5.2
 - Rails 6.0
+- Rails 6.1
 - MySQL 5.6
 - PostgreSQL
 

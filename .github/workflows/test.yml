@@ -43,6 +43,8 @@ jobs:
           gemfile: Gemfile.5.2.mysql2
         - ruby: 2.5.8
           gemfile: Gemfile.6.0.mysql2
+        - ruby: 2.5.8
+          gemfile: Gemfile.6.1.mysql2
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
     steps:
@@ -90,6 +92,8 @@ jobs:
           gemfile: Gemfile.5.2.pg
         - ruby: 2.5.8
           gemfile: Gemfile.6.0.pg
+        - ruby: 2.5.8
+          gemfile: Gemfile.6.1.pg
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
     steps:
