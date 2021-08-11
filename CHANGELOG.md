@@ -12,7 +12,17 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
-- Prefer single includes over a matrix with excludes
+
+## 0.10.0 2021-08-11
+
+### Breaking changes
+
+-
+
+### Compatible changes
+
+- Remove Rails 3.2 and Ruby < 2.5 from test matrix
+- Add Rails 6.1 and Ruby 3.0 to test matrix
 
 ## 0.9.0 2019-06-12
 
