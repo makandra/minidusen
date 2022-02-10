@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.summary = 'Low-tech search for ActiveRecord with MySQL or PostgreSQL'
   s.description = s.summary
   s.license = 'MIT'
+  s.metadata = { 'rubygems_mfa_required' => 'true' }
 
   s.files         = `git ls-files`.split("\n").reject { |path| File.lstat(path).symlink? }
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n").reject { |path| File.lstat(path).symlink? }
