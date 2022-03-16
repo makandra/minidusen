@@ -8,16 +8,16 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
--
-
 ### Compatible changes
 
 
+## 0.10.1 2022-03-16
+
+### Compatible changes
+
+- Add Rails 7.0 and Ruby 3.0 to test matrix
+
 ## 0.10.0 2021-08-11
-
-### Breaking changes
-
--
 
 ### Compatible changes
 
@@ -25,10 +25,6 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 - Add Rails 6.1 and Ruby 3.0 to test matrix
 
 ## 0.9.0 2019-06-12
-
-### Breaking changes
-
--
 
 ### Compatible changes
 
