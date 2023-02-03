@@ -27,7 +27,7 @@ GEM
     diff-lcs (1.2.5)
     edge_rider (2.0.0)
       activerecord (>= 3.2)
-    gemika (0.5.0)
+    gemika (0.8.1)
     i18n (1.5.1)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
