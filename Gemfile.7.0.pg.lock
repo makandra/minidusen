@@ -34,7 +34,7 @@ GEM
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     minitest (5.15.0)
-    pg (1.2.3)
+    pg (1.4.5)
     rake (13.0.6)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -61,7 +61,7 @@ DEPENDENCIES
   database_cleaner
   gemika
   minidusen!
-  pg (~> 1.1)
+  pg (~> 1.4.0)
   rake
   rspec (~> 3.5)
 
