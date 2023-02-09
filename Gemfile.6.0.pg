@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'activerecord', '~>6.0.0'
 gem 'pg', '~>0.18.4'
 
-# Development dependendcies
+# Development dependencies
 gem 'rake'
 gem 'database_cleaner'
 gem 'rspec', '~>3.5'
