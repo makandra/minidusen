@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 # Runtime dependencies
 gem 'activerecord', '~>6.1.0'
-gem 'pg', '~>1.1'
+gem 'pg', '~> 1.4.0'
 
-# Development dependendcies
+# Development dependencies
 gem 'rake'
 gem 'database_cleaner'
 gem 'rspec', '~>3.5'

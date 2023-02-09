@@ -31,9 +31,9 @@ jobs:
           gemfile: Gemfile.6.0.mysql2
         - ruby: 2.5.8
           gemfile: Gemfile.6.1.mysql2
-        - ruby: 3.0.0
+        - ruby: 3.2.0
           gemfile: Gemfile.6.1.mysql2
-        - ruby: 3.0.0
+        - ruby: 3.2.0
           gemfile: Gemfile.7.0.mysql2
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
@@ -45,8 +45,6 @@ jobs:
         ruby-version: "${{ matrix.ruby }}"
     - name: Setup database
       run: |
-        sudo apt-get update
-        sudo apt-get install -y mariadb-client libmariadbclient-dev
         mysql -e 'create database IF NOT EXISTS test;' -u root --password=password -P 3306 -h 127.0.0.1
     - name: Bundle
       run: |
@@ -77,9 +75,9 @@ jobs:
           gemfile: Gemfile.6.0.pg
         - ruby: 2.5.8
           gemfile: Gemfile.6.1.pg
-        - ruby: 3.0.0
+        - ruby: 3.2.0
           gemfile: Gemfile.6.1.pg
-        - ruby: 3.0.0
+        - ruby: 3.2.0
           gemfile: Gemfile.7.0.pg
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
