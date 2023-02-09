@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Runtime dependencies
-gem 'activerecord', '~>7.0.0'
+gem 'activerecord', '~>7.0.4.2'
 gem 'pg', '~>1.1'
 
 # Development dependendcies
