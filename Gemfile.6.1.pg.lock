@@ -36,7 +36,7 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.14.4)
     pg (1.2.3)
-    rake (13.0.3)
+    rake (13.0.6)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
