@@ -3,8 +3,8 @@ module Minidusen
 
     class CannotParse < StandardError; end
 
-    TEXT_QUERY = /(?:(\-)?"([^"]+)"|(\-)?([\S]+))/
-    FIELD_QUERY = /(?:\s|^|(\-))(\w+):(?!:)#{TEXT_QUERY}/
+    TEXT_QUERY = /(?:(-)?"([^"]+)"|(-)?(\S+))/
+    FIELD_QUERY = /(?:\s|^|(-))(\w+):(?!:)#{TEXT_QUERY}/
 
     class << self
 
