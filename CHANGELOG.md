@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
+- only parse strings with single colons as fields
+
 ### Compatible changes
 
 

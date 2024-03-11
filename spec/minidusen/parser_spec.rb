@@ -63,6 +63,15 @@ describe Minidusen::Parser do
         query[0].exclude.should == true
       end
 
+      it 'only parses single colons as fields' do
+        query = Minidusen::Parser.parse('filetype:docx Namespaced::Klass')
+        expect(query.size).to eq(2)
+        expect(query[0].field).to eq('filetype')
+        expect(query[0].value).to eq('docx')
+        expect(query[1].field).to eq('text')
+        expect(query[1].value).to eq('Namespaced::Klass')
+      end
+
       it 'should ignore invalid utf-8 byte sequences' do
         term_with_invalid_byte_sequence = "word\255".force_encoding('UTF-8')
 
