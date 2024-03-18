@@ -8,10 +8,13 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Breaking changes
 
-- only parse strings with single colons as fields
-
 ### Compatible changes
 
+## 0.11.0 2024-03-18
+
+### Breaking changes
+
+- only parse strings with single colons as fields
 
 ## 0.10.1 2022-03-16
 
