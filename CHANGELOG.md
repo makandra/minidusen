@@ -10,6 +10,12 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+## 0.11.1 2024-08-22
+
+### Compatible changes
+
+- Fix: Use ActiveSupport.on_load for extending ActiveRecord
+
 ## 0.11.0 2024-03-18
 
 ### Breaking changes
