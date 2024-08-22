@@ -36,4 +36,6 @@ module Minidusen
   end
 end
 
-ActiveRecord::Base.send(:extend, Minidusen::ActiveRecordExtensions::ClassMethods)
+ActiveSupport.on_load(:active_record) do
+  ActiveRecord::Base.send(:extend, Minidusen::ActiveRecordExtensions::ClassMethods)
+end
