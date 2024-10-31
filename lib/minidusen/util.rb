@@ -41,10 +41,10 @@ module Minidusen
       escape_with_backslash(phrase, ['%', '_'])
     end
 
-    def qualify_column_name(model, column_name)
+    def qualify_column_name(model, column_name, table_name: model.table_name)
       column_name = column_name.to_s
       unless column_name.include?('.')
-        quoted_table_name = model.connection.quote_table_name(model.table_name)
+        quoted_table_name = model.connection.quote_table_name(table_name)
         quoted_column_name = model.connection.quote_column_name(column_name)
         column_name = "#{quoted_table_name}.#{quoted_column_name}"
       end

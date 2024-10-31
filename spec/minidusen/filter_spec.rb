@@ -165,6 +165,14 @@ describe Minidusen::Filter do
         user_filter.filter(User, '-name_and_city_regex:Power').to_a.should == [match]
       end
 
+      it 'can be filtered twice' do
+        match = User.create!(:name => 'Sunny Flower', :city => "Flower")
+        no_match = User.create!(:name => 'Sunny Power', :city => "Power")
+        also_no_match = User.create!(:name => 'Sunny Forever', :city => "Forever")
+        first_result = user_filter.filter(User, '-name_and_city_regex:Power')
+        user_filter.filter(first_result, '-name_and_city_regex:Forever').to_a.should == [match]
+      end
+
     end
 
     context 'when the given query is blank' do

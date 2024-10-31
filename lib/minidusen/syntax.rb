@@ -3,6 +3,7 @@ module Minidusen
 
     def initialize
       @scopers = {}
+      @alias_count = 0
     end
 
     def learn_field(field, &scoper)
@@ -45,9 +46,19 @@ module Minidusen
 
     def append_excludes(instance, matches, exclude_query)
       excluded_records = apply_query(instance, matches.origin_class, exclude_query)
-      qualified_id_field = Util.qualify_column_name(excluded_records, excluded_records.primary_key)
-      exclude_sql = "#{qualified_id_field} NOT IN (#{excluded_records.select(qualified_id_field).to_sql})"
-      matches.where(exclude_sql)
+      primary_key = excluded_records.primary_key
+      join_alias = "exclude_#{@alias_count += 1}"
+      # due to performance reasons on big tables this needs to be implemented as an anti-join
+      # will generate SQL like
+      # LEFT JOIN (SELECT "users"."id" FROM "users" WHERE $condition) excluded
+      # ON "users"."id" = "excluded"."id"
+      # WHERE "excluded"."id" IS NULL
+      matches
+        .joins(<<~SQL)
+          LEFT JOIN (#{excluded_records.select(primary_key).to_sql}) #{join_alias}
+          ON #{Util.qualify_column_name(excluded_records, primary_key)} = #{Util.qualify_column_name(excluded_records, primary_key, table_name: join_alias)}
+        SQL
+        .where(join_alias => { primary_key => nil })
     end
 
   end
