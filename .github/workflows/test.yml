@@ -37,7 +37,7 @@ jobs:
           gemfile: Gemfile.7.0.mysql2
         - ruby: 3.2.0
           gemfile: Gemfile.7.1.mysql2
-        - ruby: 3.2.0
+        - ruby: 3.3.4
           gemfile: Gemfile.7.2.mysql2
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
@@ -85,7 +85,7 @@ jobs:
           gemfile: Gemfile.7.0.pg
         - ruby: 3.2.0
           gemfile: Gemfile.7.1.pg
-        - ruby: 3.2.0
+        - ruby: 3.3.4
           gemfile: Gemfile.7.2.pg
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
