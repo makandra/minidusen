@@ -9,7 +9,7 @@ It works with your existing MySQL or PostgreSQL schema by mostly relying on simp
 
 This makes Minidusen a quick way to implement find-as-you-type filters for index views:
 
-![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/master/doc/filtered_index_view.cropped.png)
+![A list of records filtered by a query](https://raw.githubusercontent.com/makandra/minidusen/main/doc/filtered_index_view.cropped.png)
 
 
 ### Supported queries
