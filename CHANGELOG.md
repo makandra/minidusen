@@ -10,6 +10,12 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+## 0.11.2 2024-10-31
+
+### Compatible changes
+
+- Fix: Performance of queries using a negation ("-xxx") is improved by using an anti-join instead of a "NOT IN".
+
 ## 0.11.1 2024-08-22
 
 ### Compatible changes
