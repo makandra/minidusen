@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 # Runtime dependencies
-gem 'activerecord', '~>6.0.0'
-gem 'mysql2', '~>0.4.4'
+gem 'activerecord', '~>8.0.1'
+gem 'mysql2', '~>0.5'
 
 # Development dependencies
 gem 'rake'

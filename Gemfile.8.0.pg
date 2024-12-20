@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
 # Runtime dependencies
-gem 'activerecord', '~>5.2.3'
-gem 'mysql2', '~>0.4.4'
-gem 'i18n', '<=1.5.1' # Required to support tests for Ruby 2.2.x
+gem 'activerecord', '~>8.0.1'
+gem 'pg', '~> 1.4.0'
 
 # Development dependencies
 gem 'rake'
