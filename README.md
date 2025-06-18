@@ -220,6 +220,36 @@ ContactFilter.new.filter(Contact, 'email:foo@bar.com').to_sql
 # => "SELECT * FROM contacts WHERE email='foo@bar.com'"
 ```
 
+Filter aliases
+--------------
+
+You can define aliases for the same filter by passing multiple field names to a single `filter` call:
+
+```ruby
+class ContactFilter
+  include Minidusen::Filter
+
+  filter :email, :mail, :contact do |scope, email|
+    scope.where(email: email)
+  end
+end
+```
+
+Now you can search using any of the defined aliases:
+
+```ruby
+ContactFilter.new.filter(Contact, 'email:foo@bar.com').to_sql
+# => "SELECT * FROM contacts WHERE email='foo@bar.com'"
+
+ContactFilter.new.filter(Contact, 'mail:foo@bar.com').to_sql
+# => "SELECT * FROM contacts WHERE email='foo@bar.com'"
+
+ContactFilter.new.filter(Contact, 'contact:foo@bar.com').to_sql
+# => "SELECT * FROM contacts WHERE email='foo@bar.com'"
+```
+
+This feature is useful when you want to provide multiple intuitive ways for users to search the same field.
+
 ### Caveat
 
 If you search for a phrase containing a colon (e.g. `deploy:rollback`), Minidusen will mistake the first part as a – nonexistent – qualifier and return an empty set.
