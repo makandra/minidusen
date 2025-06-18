@@ -5,3 +5,5 @@ tags
 tmp
 spec/support/database.yml
 .byebug_history
+.ruby-version
+.ruby-gemset
