@@ -10,23 +10,23 @@ describe Minidusen::Parser do
         query[0].field.should == 'fieldname'
         query[0].value.should == 'fieldvalue'
         query[0].exclude.should == false
-        query[0].phrase.should == false
+        query[0].phrase?.should == false
         query[1].field.should == 'text'
         query[1].value.should == 'word'
         query[1].exclude.should == false
-        query[1].phrase.should == false
+        query[1].phrase?.should == false
         query[2].field.should == 'text'
         query[2].value.should == 'a phrase'
         query[2].exclude.should == false
-        query[2].phrase.should == true
+        query[2].phrase?.should == true
         query[3].field.should == 'text'
         query[3].value.should == 'deploy:rollback'
         query[3].exclude.should == false
-        query[3].phrase.should == true
+        query[3].phrase?.should == true
         query[4].field.should == 'text'
         query[4].value.should == 'db:seed'
         query[4].exclude.should == true
-        query[4].phrase.should == true
+        query[4].phrase?.should == true
       end
 
       it 'should parse field tokens first, because they usually give maximum filtering at little cost' do
@@ -50,7 +50,7 @@ describe Minidusen::Parser do
         query[0].field.should == 'text'
         query[0].value.should == 'deploy:rollback'
         query[0].exclude.should == false
-        query[0].phrase.should == true
+        query[0].phrase?.should == true
       end
 
       it 'should parse a field token which is at the beginning of the search string' do
@@ -59,7 +59,7 @@ describe Minidusen::Parser do
         query[0].field.should == 'filetype'
         query[0].value.should == 'pdf'
         query[0].exclude.should == false
-        query[0].phrase.should == false
+        query[0].phrase?.should == false
       end
 
       it 'should parse an excluded field token which is at the beginning of the search string' do
@@ -68,7 +68,7 @@ describe Minidusen::Parser do
         query[0].field.should == 'filetype'
         query[0].value.should == 'docx'
         query[0].exclude.should == true
-        query[0].phrase.should == false
+        query[0].phrase?.should == false
       end
 
       it 'only parses single colons as fields' do

@@ -23,7 +23,7 @@ module Minidusen
     end
 
     def phrase?
-      phrase
+      @phrase
     end
 
   end
