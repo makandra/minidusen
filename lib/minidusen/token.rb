@@ -1,7 +1,7 @@
 module Minidusen
   class Token
 
-    attr_reader :field, :value, :exclude, :phrase
+    attr_reader :field, :value, :exclude
 
     def initialize(options)
       @value = options.fetch(:value)
