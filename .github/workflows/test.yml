@@ -32,11 +32,11 @@ jobs:
         include:
         - ruby: 2.7.8
           gemfile: Gemfile.6.1.mysql2
-        - ruby: 3.2.0
+        - ruby: 3.2.3
           gemfile: Gemfile.6.1.mysql2
-        - ruby: 3.2.0
+        - ruby: 3.2.3
           gemfile: Gemfile.7.0.mysql2
-        - ruby: 3.2.0
+        - ruby: 3.2.3
           gemfile: Gemfile.7.1.mysql2
         - ruby: 3.3.4
           gemfile: Gemfile.7.2.mysql2
@@ -82,11 +82,11 @@ jobs:
         include:
         - ruby: 2.7.8
           gemfile: Gemfile.6.1.pg
-        - ruby: 3.2.0
+        - ruby: 3.2.3
           gemfile: Gemfile.6.1.pg
-        - ruby: 3.2.0
+        - ruby: 3.2.3
           gemfile: Gemfile.7.0.pg
-        - ruby: 3.2.0
+        - ruby: 3.2.3
           gemfile: Gemfile.7.1.pg
         - ruby: 3.3.4
           gemfile: Gemfile.7.2.pg
