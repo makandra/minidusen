@@ -45,6 +45,7 @@ jobs:
 
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+      BUNDLE_FROZEN: "false"
 
     steps:
     - uses: actions/checkout@v3
@@ -95,6 +96,7 @@ jobs:
 
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+      BUNDLE_FROZEN: "false"
 
     steps:
     - uses: actions/checkout@v3
