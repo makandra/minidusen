@@ -42,9 +42,10 @@ module Minidusen
 
       def extract_text_query_tokens(query_string, query)
         while query_string.sub!(TEXT_QUERY, '')
+          phrase = !$2.nil?
           value = "#{$2}#{$4}"
           exclude = "#{$1}#{$3}" == "-"
-          options = { :field => 'text', :value => value, :exclude => exclude }
+          options = { :field => 'text', :value => value, :exclude => exclude, :phrase => phrase }
           query << Token.new(options)
         end
       end
@@ -52,9 +53,10 @@ module Minidusen
       def extract_field_query_tokens(query_string, query)
         while query_string.sub!(FIELD_QUERY, '')
           field = $2
+          phrase = !$4.nil?
           value = "#{$4}#{$6}"
           exclude = "#{$1}" == "-"
-          options = { :field => field, :value => value, :exclude => exclude }
+          options = { :field => field, :value => value, :exclude => exclude, :phrase => phrase }
           query << Token.new(options)
         end
       end
