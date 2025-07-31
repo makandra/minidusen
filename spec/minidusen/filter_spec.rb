@@ -224,4 +224,26 @@ describe Minidusen::Filter do
 
   end
 
+  describe 'filter aliases' do
+
+    it 'should support defining multiple field aliases with a single filter call' do
+      filter_class = Class.new do
+        include Minidusen::Filter
+
+        filter :name, :title do |scope, phrases|
+          scope.where_like([:name] => phrases)
+        end
+      end
+
+      filter_instance = filter_class.new
+
+      match = User.create!(:name => 'John Doe')
+      no_match = User.create!(:name => 'Jane Smith')
+
+      filter_instance.filter(User, 'name:John').to_a.should == [match]
+      filter_instance.filter(User, 'title:John').to_a.should == [match]
+    end
+
+  end
+
 end
