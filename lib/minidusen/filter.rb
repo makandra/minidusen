@@ -6,8 +6,10 @@ module Minidusen
 
       attr_accessor :minidusen_syntax
 
-      def filter(field, &block)
-        minidusen_syntax.learn_field(field, &block)
+      def filter(*fields, &block)
+        fields.each do |field|
+          minidusen_syntax.learn_field(field, &block)
+        end
       end
 
     end
