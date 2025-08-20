@@ -10,6 +10,18 @@ This project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html
 
 ### Compatible changes
 
+## 1.0.1 2025-08-20
+
+### Compatible changes
+
+- Support filter aliases (#25). Thanks to @botandrose.
+
+## 1.0.0 2025-07-31
+
+### Breaking changes
+
+- Add a `phrase` flag to tokens
+
 ## 0.11.2 2024-10-31
 
 ### Compatible changes
